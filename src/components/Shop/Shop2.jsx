@@ -61,7 +61,7 @@ function Card() {
     };
 
     const getCarImage = (carId) => {
-        const carImages = images[carId].images[3].image_url;
+        const carImages = images[carId].images[3]?.image_url;
         
         return carImages ? carImages : 'placeholder-image-url';
     };

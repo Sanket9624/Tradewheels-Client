@@ -14,6 +14,7 @@ import VerifyOtp from '../Signup/VerifyOtp';
 import Video from "../Page/Video/Video";
 import Profile from '../Profile/Profile';
 import { CgProfile } from "react-icons/cg";
+import CarImages from '../Sell/CarImages';
 import user from "../../../public/images/images/user.png";
 import Sell from'../Sell/Sell';
 
@@ -88,10 +89,11 @@ function Navbar() {
                             <div className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 ${isOpen ? 'block' : 'hidden'} md:flex md:items-center md:justify-between`}>
                                 <div className="flex flex-col px-2 -mx-4 md:flex-row md:mx-10 md:py-0">
                                     <Link to="/home" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Home</Link>
-                                    <Link to="/shop" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Shop</Link>
+                                    <Link to="/sell" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Sell</Link>
+                                    <Link to="/shop" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Buy</Link>
                                     <Link to="/about" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">About</Link>
                                     <Link to="/contact" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Contact</Link>
-                                <Link to="/sell" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2">SEll</Link>
+                                {/* <Link to="/sell" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2">SEll</Link> */}
                             
                                 </div>
                                 <div className="relative flex gap-3  md:mt-0">
@@ -133,6 +135,7 @@ function Navbar() {
                         <Route path='*' element={<Error />} />
                         <Route path='/sell' element={< Sell/>} />
                         <Route path='/profile' element={<Profile />} />
+                        <Route path="/CarImages/:carId" element={<CarImages />} />
                         <Route path='/singlepage/:id' element={<SinglePage />} />
                     </Routes>
                 </Router>
