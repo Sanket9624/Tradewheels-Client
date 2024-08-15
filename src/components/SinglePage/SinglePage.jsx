@@ -12,6 +12,9 @@ function Singleproduct() {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [activeImg, setActiveImage] = useState(null);
+    const [scheduledDate, setScheduledDate] = useState('');
+    const [scheduledTime, setScheduledTime] = useState('');
+    const [bookingMessage, setBookingMessage] = useState('');
     const userId = localStorage.getItem('userId');
 
     useEffect(() => {
@@ -77,6 +80,38 @@ function Singleproduct() {
         }
     };
 
+    const handleBookTestDrive = async () => {
+        if (!scheduledDate || !scheduledTime) {
+            setBookingMessage('Please select both date and time.');
+            return;
+        }
+    
+        try {
+            const response = await fetch(`https://tradewheels.onrender.com/api/testDrive/book/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                },
+                body: JSON.stringify({ scheduledDate, scheduledTime })
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to book test drive');
+            }
+    
+            const result = await response.json();
+            setBookingMessage(result.message || 'Test drive booked successfully!');
+    
+            // Clear the input fields
+            setScheduledDate('');
+            setScheduledTime('');
+        } catch (error) {
+            setBookingMessage('Error booking test drive: ' + error.message);
+        }
+    };
+    
+
     if (!car) {
         return <p>Loading...</p>;
     }
@@ -109,7 +144,7 @@ function Singleproduct() {
             <div className="flex flex-col gap-4 lg:w-2/4 bg-white p-6 rounded-lg shadow-lg">
                 <p className="text-gray-500 text-lg">{car.brand}</p>
                 <p className="text-gray-500 text-lg">{car.year}</p>
-                <span className="text-3xl font-bold">{car.make} {car.model}</span>
+                <span className="text-3xl font-bold">{car.brand} {car.model}</span>
 
                 <div className="flex gap-4 mt-4">
                     <div className="bg-slate-200 text-base p-2 rounded-lg font-semibold">{car.km_driven} KM</div>
@@ -124,20 +159,44 @@ function Singleproduct() {
 
                 <h6 className="text-2xl font-bold text-blue-500 mt-6">Rs {car.price}</h6>
 
+                <div className="flex flex-col mt-6">
+                    <label htmlFor="scheduledDate" className="text-lg font-medium text-gray-700">Scheduled Date</label>
+                    <input
+                        id="scheduledDate"
+                        type="date"
+                        value={scheduledDate}
+                        onChange={(e) => setScheduledDate(e.target.value)}
+                        className="p-3 border border-gray-300 rounded-lg"
+                    />
+                </div>
+                
+                <div className="flex flex-col mt-4">
+                    <label htmlFor="scheduledTime" className="text-lg font-medium text-gray-700">Scheduled Time</label>
+                    <input
+                        id="scheduledTime"
+                        type="time"
+                        value={scheduledTime}
+                        onChange={(e) => setScheduledTime(e.target.value)}
+                        className="p-3 border border-gray-300 rounded-lg"
+                    />
+                </div>
+
                 <div className="flex flex-row items-center pt-4">
                     {userData ? (
-                        <button
-                            className="bg-blue-600 hover:bg-blue-700 transition duration-200 font-semibold px-5 py-3 text-white rounded-md"
-                            onClick={() => addItem(car)}
-                        >
-                            Book Test Drive
-                        </button>
+                        <>
+                            <button
+                                className="bg-blue-600 hover:bg-blue-700 transition duration-200 font-semibold px-5 py-3 text-white rounded-md"
+                                onClick={handleBookTestDrive}
+                            >
+                                Book Test Drive
+                            </button>
+                            {bookingMessage && <p className="pl-5 text-red-500">{bookingMessage}</p>}
+                        </>
                     ) : (
                         <Link to="/login" className="bg-blue-600 hover:bg-blue-700 transition duration-200 font-semibold px-5 py-3 text-white rounded-md">
                             Login to Book Test Drive
                         </Link>
                     )}
-                    {message && <p className="pl-5 text-red-500">{message}</p>}
                 </div>
             </div>
         </div>

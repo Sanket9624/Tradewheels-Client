@@ -15,6 +15,7 @@ import Video from "../Page/Video/Video";
 import Profile from '../Profile/Profile';
 import { CgProfile } from "react-icons/cg";
 import CarImages from '../Sell/CarImages';
+import UserTestDrives from '../userTestDrive/UserTestDrive';
 import user from "../../../public/images/images/user.png";
 import Sell from'../Sell/Sell';
 
@@ -93,6 +94,7 @@ function Navbar() {
                                     <Link to="/shop" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Buy</Link>
                                     <Link to="/about" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">About</Link>
                                     <Link to="/contact" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Contact</Link>
+                                <Link to="/TestDrive" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">TestDrive</Link>
                                 {/* <Link to="/sell" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2">SEll</Link> */}
                             
                                 </div>
@@ -137,6 +139,7 @@ function Navbar() {
                         <Route path='/profile' element={<Profile />} />
                         <Route path="/CarImages/:carId" element={<CarImages />} />
                         <Route path='/singlepage/:id' element={<SinglePage />} />
+                        <Route path='/TestDrive' element={<UserTestDrives />} />
                     </Routes>
                 </Router>
             )}
