@@ -15,6 +15,7 @@ import Video from "../Page/Video/Video";
 import Profile from '../Profile/Profile';
 import { CgProfile } from "react-icons/cg";
 import user from "../../../public/images/images/user.png";
+import Sell from'../Sell/Sell';
 
 function Navbar() {
     const [userData, setUserData] = useState(null);
@@ -90,6 +91,8 @@ function Navbar() {
                                     <Link to="/shop" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Shop</Link>
                                     <Link to="/about" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">About</Link>
                                     <Link to="/contact" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-200 md:mx-2">Contact</Link>
+                                <Link to="/sell" className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2">SEll</Link>
+                            
                                 </div>
                                 <div className="relative flex gap-3  md:mt-0">
                                     {userData ? (
@@ -128,6 +131,7 @@ function Navbar() {
                         <Route path='/cart' element={<Cart />} />
                         <Route path='/checkout' element={<CheckOut />} />
                         <Route path='*' element={<Error />} />
+                        <Route path='/sell' element={< Sell/>} />
                         <Route path='/profile' element={<Profile />} />
                         <Route path='/singlepage/:id' element={<SinglePage />} />
                     </Routes>
