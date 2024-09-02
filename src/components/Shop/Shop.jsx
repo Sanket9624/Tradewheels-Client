@@ -1,6 +1,5 @@
 import React from 'react'
 import Shop2 from'./Shop2'
-import Shop1  from './Shop1'
 import Divider from '../Divider/Divider'
 import Footer from '../Footer/Footer'
 export default function Top_sales() {
@@ -30,7 +29,7 @@ export default function Top_sales() {
     </div>
     <div> 
   
-        <Shop1/>
+        <Shop2 />
   </div>
           <Divider/>
     <Footer/>

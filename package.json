@@ -12,7 +12,7 @@
   "dependencies": {
     "@headlessui/react": "^0.0.0-insiders.3b2a102",
     "@heroicons/react": "^2.1.5",
-    "axios": "^1.6.7",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "font-awesome": "^4.7.0",
     "jwt-decode": "^4.0.0",
