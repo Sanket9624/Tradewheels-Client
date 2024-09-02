@@ -17,7 +17,7 @@ function Card() {
 
     const fetchCarData = async () => {
         try {
-            const response = await fetch('https://tradewheels.onrender.com/api/sellCar/cars');
+            const response = await fetch('http://localhost:8000/api/sellCar/cars');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -35,7 +35,7 @@ function Card() {
         try {
             const imagePromises = carIds.map(async (carId) => {
                 
-                const response = await fetch(`https://tradewheels.onrender.com/api/images/${carId}`);
+                const response = await fetch(`http://localhost:8000/api/images/${carId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

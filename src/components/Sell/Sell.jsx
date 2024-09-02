@@ -29,7 +29,7 @@ const Sell = () => {
       };
 
       // Post data to the server
-      const response = await fetch('https://tradewheels.onrender.com/api/sellCar', {
+      const response = await fetch('http://localhost:8000/api/sellCar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

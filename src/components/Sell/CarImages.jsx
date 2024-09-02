@@ -30,7 +30,7 @@ const CarImages = () => {
     });
 
     try {
-      const response = await fetch(`https://tradewheels.onrender.com/api/images/upload/${carId}`, {
+      const response = await fetch(`http://localhost:8000/api/images/upload/${carId}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('authToken')}`

@@ -28,7 +28,7 @@ function Navbar() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch(`https://tradewheels.onrender.com/api/user/user-name`, {
+                const response = await fetch(`http://localhost:8000/api/user/user-name`, {
                     headers: {
                       'Content-type': 'application/json',
                       'Authorization': `Bearer ${localStorage.getItem('authToken')}` 
@@ -53,7 +53,7 @@ function Navbar() {
 
     const handleLogout = () => {
         setUserData(null);
-        localStorage.removeItem('userId');
+        localStorage.removeItem('authToken');
     };
 
     const [isOpen, setIsOpen] = useState(false);
@@ -135,11 +135,11 @@ function Navbar() {
                         <Route path='/cart' element={<Cart />} />
                         <Route path='/checkout' element={<CheckOut />} />
                         <Route path='*' element={<Error />} />
-                        <Route path='/sell' element={< Sell/>} />
+                        <Route path='/sell' element={localStorage.getItem('authToken') === "undefined"  ? < SendOtp/> : <Sell />} />
                         <Route path='/profile' element={<Profile />} />
                         <Route path="/CarImages/:carId" element={<CarImages />} />
                         <Route path='/singlepage/:id' element={<SinglePage />} />
-                        <Route path='/TestDrive' element={<UserTestDrives />} />
+                        <Route path='/TestDrive' element={localStorage.getItem('authToken') === "undefined" ? <SendOtp /> : <UserTestDrives />} />
                     </Routes>
                 </Router>
             )}

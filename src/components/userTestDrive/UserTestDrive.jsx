@@ -9,7 +9,7 @@ function UserTestDrives() {
     useEffect(() => {
         const fetchTestDrives = async () => {
             try {
-                const response = await fetch('https://tradewheels.onrender.com/api/testDrive/user', {
+                const response = await fetch('http://localhost:8000/api/testDrive/user', {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -45,16 +45,16 @@ function UserTestDrives() {
                 <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
                     <thead>
                         <tr className="border-b border-gray-200">
-                            <th className="px-6 py-3 text-left text-gray-500">Car ID</th>
+                            <th className="px-6 py-3 text-left text-gray-500">No.</th>
                             <th className="px-6 py-3 text-left text-gray-500">Scheduled Date</th>
                             <th className="px-6 py-3 text-left text-gray-500">Scheduled Time</th>
                             <th className="px-6 py-3 text-left text-gray-500">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {testDrives.map((testDrive) => (
+                        {testDrives.map((testDrive, index) => (
                             <tr key={testDrive.id} className="border-b border-gray-200">
-                                <td className="px-6 py-4">{testDrive.car_id}</td>
+                                <td className="px-6 py-4">{index + 1}</td> {/* Display sequential number */}
                                 <td className="px-6 py-4">{new Date(testDrive.scheduled_date).toLocaleDateString()}</td>
                                 <td className="px-6 py-4">{testDrive.scheduled_time}</td>
                                 <td className="px-6 py-4">

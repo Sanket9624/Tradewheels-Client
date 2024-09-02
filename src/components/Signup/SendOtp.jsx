@@ -8,7 +8,7 @@ function SendOtp() {
     const handleSendOtp = async (event) => {
         event.preventDefault();
         try {
-            await fetch('https://tradewheels.onrender.com/api/user/send-otp', {
+            await fetch('http://localhost:8000/api/user/send-otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

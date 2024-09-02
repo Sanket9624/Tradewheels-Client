@@ -20,6 +20,7 @@ function VerifyOtp() {
             const data = await verifyOtp(mobileNo, otp, fullName, email);
             // Store token in localStorage
             localStorage.setItem('authToken', data.token);
+            console.log(data);
             navigate('/home');
         } catch (error) {
             console.error('OTP verification or signup failed:', error);
@@ -28,7 +29,7 @@ function VerifyOtp() {
     };
 
     const verifyOtp = async (mobileNo, otp, fullName, email) => {
-        const response = await fetch('https://tradewheels.onrender.com/api/user/verify-otp', {
+        const response = await fetch('http://localhost:8000/api/user/verify-otp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

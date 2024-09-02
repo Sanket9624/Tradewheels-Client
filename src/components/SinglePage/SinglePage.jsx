@@ -20,7 +20,7 @@ function Singleproduct() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch(`https://tradewheels.onrender.com/api/user`, {
+                const response = await fetch(`http://localhost:8000/api/user`, {
                     headers: {
                         'Content-type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('authToken')}`
@@ -50,7 +50,7 @@ function Singleproduct() {
 
     const fetchCarData = async () => {
         try {
-            const response = await fetch(`https://tradewheels.onrender.com/api/sellCar/cars/${id}`);
+            const response = await fetch(`http://localhost:8000/api/sellCar/cars/${id}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -63,7 +63,7 @@ function Singleproduct() {
 
     const fetchImageData = async () => {
         try {
-            const response = await fetch(`https://tradewheels.onrender.com/api/images/${id}`);
+            const response = await fetch(`http://localhost:8000/api/images/${id}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -87,7 +87,7 @@ function Singleproduct() {
         }
     
         try {
-            const response = await fetch(`https://tradewheels.onrender.com/api/testDrive/book/${id}`, {
+            const response = await fetch(`http://localhost:8000/api/testDrive/book/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ function Singleproduct() {
                             {bookingMessage && <p className="pl-5 text-red-500">{bookingMessage}</p>}
                         </>
                     ) : (
-                        <Link to="/login" className="bg-blue-600 hover:bg-blue-700 transition duration-200 font-semibold px-5 py-3 text-white rounded-md">
+                        <Link to="/SendOtp" className="bg-blue-600 hover:bg-blue-700 transition duration-200 font-semibold px-5 py-3 text-white rounded-md">
                             Login to Book Test Drive
                         </Link>
                     )}
